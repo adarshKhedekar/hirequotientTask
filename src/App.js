@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Toaster, toast } from "react-hot-toast";
 import "./App.css";
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
       (_, index) => index + 1
     );
     setPages(pageArray);
+    toast.error('Deleted Successfully!')
   }
 
   //Editing a row
@@ -65,7 +67,7 @@ function App() {
         name.style.backgroundColor = "transparent";
         email.style.backgroundColor = "transparent";
         role.style.backgroundColor = "transparent";
-
+        toast.success('Edited Successfully!')
         //after editing removing the edit button
         btn.remove();
       });
@@ -97,6 +99,9 @@ function App() {
       return !selectedRow.includes(data.id);
     });
     setAdminData(updatedAdmins);
+    if(selectedRow.length > 0){
+      toast.error('Deleted Successfully!')
+    }
 
     // Clear selected rows after deletion
     setSelectedRow([]);
@@ -183,6 +188,7 @@ function App() {
 
   return (
     <div className="App">
+      <div><Toaster/></div>
       <div className="nav">
       <input type="text" placeholder="search" onChange={handleSearch} />
       <div className="del-button" onClick={handleMultipleDelete}>

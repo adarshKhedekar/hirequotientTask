@@ -107,3 +107,8 @@ table, td, th{
 .footer button:hover{
   background-color: #F5F7F8;
 }
+@media only screen and (max-width: 768px) {
+  body{
+    padding: 200px 400px;
+  }
+}
